@@ -19,4 +19,9 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClear(){
+    this.svc.form.reset();
+    this.svc.initializeFormGroup();
+  }
+
 }
