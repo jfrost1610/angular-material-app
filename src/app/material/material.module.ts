@@ -6,10 +6,28 @@ import * as Material from '@angular/material';
   declarations: [],
   imports: [
     CommonModule,
-    Material.MatToolbarModule
+    Material.MatToolbarModule,
+    Material.MatGridListModule,
+    Material.MatFormFieldModule,
+    Material.MatInputModule,
+    Material.MatRadioModule,
+    Material.MatSelectModule,
+    Material.MatCheckboxModule,
+    Material.MatDatepickerModule,
+    Material.MatNativeDateModule,
+    Material.MatButtonModule
   ],
   exports: [
-    Material.MatToolbarModule
+    Material.MatToolbarModule,
+    Material.MatGridListModule,
+    Material.MatFormFieldModule,
+    Material.MatInputModule,
+    Material.MatRadioModule,
+    Material.MatSelectModule,
+    Material.MatCheckboxModule,
+    Material.MatDatepickerModule,
+    Material.MatNativeDateModule,
+    Material.MatButtonModule
   ]
 })
 export class MaterialModule { }
