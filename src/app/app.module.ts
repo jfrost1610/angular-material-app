@@ -38,6 +38,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
     DepartmentService,
     DatePipe
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EmployeeComponent]
 })
 export class AppModule { }
