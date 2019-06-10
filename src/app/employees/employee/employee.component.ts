@@ -11,17 +11,25 @@ export class EmployeeComponent implements OnInit {
   constructor(private svc: EmployeeService) { }
 
   departments = [
-    {id:1,value:'Dep 1'},
-    {id:2,value:'Dep 2'},
-    {id:3,value:'Dep 3'}
+    { id: 1, value: 'Dep 1' },
+    { id: 2, value: 'Dep 2' },
+    { id: 3, value: 'Dep 3' }
   ]
 
   ngOnInit() {
+    this.svc.getEmployees();
   }
 
-  onClear(){
+  onClear() {
     this.svc.form.reset();
     this.svc.initializeFormGroup();
+  }
+
+  onSubmit() {
+    if (this.svc.form.valid) {
+      this.svc.insertEmployee(this.svc.form.value);
+      this.onClear();
+    }
   }
 
 }
