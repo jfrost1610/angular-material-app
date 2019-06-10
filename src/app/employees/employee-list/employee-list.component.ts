@@ -13,7 +13,7 @@ export class EmployeeListComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
   // Control the columns displayed and their order from here
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city'];
+  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'actions'];
 
   ngOnInit() {
     this.svc.getEmployees().subscribe(
