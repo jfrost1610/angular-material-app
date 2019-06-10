@@ -36,6 +36,14 @@ export class EmployeeListComponent implements OnInit {
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
+
+        // Adding predicate to filter only by the data of the columns displayed
+        this.listData.filterPredicate = (data, filter) => {
+          return this.displayedColumns.some(ele => {
+            return ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1;
+          });
+        }
+
       }
     );
   }
