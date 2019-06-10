@@ -35,8 +35,13 @@ export class EmployeeComponent implements OnInit {
         this.svc.updateEmployee(this.svc.form.value);
       this.onClear();
       this.notificationService.success('Submitted successfully');
-      this.dialogRef.close();
+      this.onClose();
     }
+  }
+
+  onClose() {
+    this.onClear();
+    this.dialogRef.close();
   }
 
 }
