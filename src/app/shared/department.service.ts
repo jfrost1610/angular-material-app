@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,17 @@ export class DepartmentService {
         });
         console.log('Departments fetched from firebase :: ', this.array);
       }
-
     );
   }
+
+  getDepartmentName($key) {
+    if ($key == "0") {
+      return "";
+    } else {
+      return _.find(this.array, (obj) => {
+        return obj.$key == $key;
+      })['name'];
+    }
+  }
+
 }

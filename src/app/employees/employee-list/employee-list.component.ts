@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { DepartmentService } from 'src/app/shared/department.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -9,11 +10,12 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(private svc: EmployeeService) { }
+  constructor(private svc: EmployeeService,
+    private departmentService: DepartmentService) { }
 
   listData: MatTableDataSource<any>;
   // Control the columns displayed and their order from here
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'actions'];
+  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'departmentName', 'actions'];
 
   searchKey: string;
 
@@ -24,7 +26,9 @@ export class EmployeeListComponent implements OnInit {
     this.svc.getEmployees().subscribe(
       list => {
         let array = list.map(item => {
+          let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
           return {
+            departmentName,
             $key: item.key,
             ...item.payload.val()
           };
