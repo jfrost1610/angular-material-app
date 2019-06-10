@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { DepartmentService } from 'src/app/shared/department.service';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-employee',
@@ -12,7 +13,8 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private svc: EmployeeService,
     private departmentService: DepartmentService,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService,
+    private dialogRef: MatDialogRef<EmployeeComponent>) {
 
   }
 
@@ -30,6 +32,7 @@ export class EmployeeComponent implements OnInit {
       this.svc.insertEmployee(this.svc.form.value);
       this.onClear();
       this.notificationService.success('Submitted successfully');
+      this.dialogRef.close();
     }
   }
 
