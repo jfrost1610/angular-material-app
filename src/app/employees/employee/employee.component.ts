@@ -29,7 +29,10 @@ export class EmployeeComponent implements OnInit {
 
   onSubmit() {
     if (this.svc.form.valid) {
-      this.svc.insertEmployee(this.svc.form.value);
+      if (!this.svc.form.get('$key').value)
+        this.svc.insertEmployee(this.svc.form.value);
+      else
+        this.svc.updateEmployee(this.svc.form.value);
       this.onClear();
       this.notificationService.success('Submitted successfully');
       this.dialogRef.close();
