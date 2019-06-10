@@ -18,9 +18,10 @@ export class DepartmentService {
             $key: item.key,
             ...item.payload.val()
           }
-        })
+        });
+        console.log('Departments fetched from firebase :: ', this.array);
       }
+
     );
-    console.log('Array value',this.array);
   }
 }
