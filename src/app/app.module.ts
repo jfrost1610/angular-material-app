@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,8 +31,9 @@ import { DepartmentService } from './shared/department.service';
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
-    EmployeeService, 
-    DepartmentService
+    EmployeeService,
+    DepartmentService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
