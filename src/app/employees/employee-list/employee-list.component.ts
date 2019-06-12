@@ -5,6 +5,7 @@ import { DepartmentService } from 'src/app/shared/department.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { EmployeeComponent } from '../employee/employee.component';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { DialogService } from 'src/app/shared/dialog.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -16,7 +17,8 @@ export class EmployeeListComponent implements OnInit {
   constructor(private svc: EmployeeService,
     private departmentService: DepartmentService,
     private dialog: MatDialog,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService,
+    private dialogService: DialogService) { }
 
   listData: MatTableDataSource<any>;
   // Control the columns displayed and their order from here
@@ -81,10 +83,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onDelete($key) {
-    if (confirm('Are you sure to delete this record?')) {
-      this.svc.deleteEmployee($key);
-      this.notificationService.warn('Deleted successfully!');
-    }
+    // if (confirm('Are you sure to delete this record?')) {
+    //   this.svc.deleteEmployee($key);
+    //   this.notificationService.warn('Deleted successfully!');
+    // }
+    this.dialogService.openConfirmDialog('Are you sure to delete this record?');
   }
 
 }
