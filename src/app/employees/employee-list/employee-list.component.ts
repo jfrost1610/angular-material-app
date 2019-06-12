@@ -83,11 +83,13 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onDelete($key) {
-    // if (confirm('Are you sure to delete this record?')) {
-    //   this.svc.deleteEmployee($key);
-    //   this.notificationService.warn('Deleted successfully!');
-    // }
-    this.dialogService.openConfirmDialog('Are you sure to delete this record?');
+    this.dialogService.openConfirmDialog('Are you sure to delete this record?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.svc.deleteEmployee($key);
+          this.notificationService.warn('Deleted successfully!');
+        }
+      });
   }
 
 }
