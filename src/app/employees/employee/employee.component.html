@@ -22,6 +22,7 @@
           <input formControlName="mobile" matInput placeholder="Mobile*">
           <mat-error *ngIf="svc.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
           <mat-error *ngIf="svc.form.controls['mobile'].errors?.minlength">Minimum 8 characters needed.</mat-error>
+          <mat-error *ngIf="svc.form.controls['mobile'].errors?.pattern">Invalid mobile number.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="city" matInput placeholder="City">

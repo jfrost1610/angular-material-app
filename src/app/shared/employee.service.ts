@@ -17,7 +17,7 @@ export class EmployeeService {
     $key: new FormControl(null),
     fullName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    mobile: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
     city: new FormControl(''),
     gender: new FormControl('1'),
     department: new FormControl(0),
